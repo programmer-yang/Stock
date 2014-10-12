@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+	
+	<http pattern="/login" security="none"/>
+	<http pattern="/views/error/404.jsp" security="none"/>
+	<http pattern="/resources/**" security="none"/>
+	
+	<http  access-denied-page="/views/error/404.jsp" >
+		<form-login login-page="/login" /> 
+		
+		<intercept-url pattern="/views/admin/**" access="ROLE_ADMIN"/>
+		<intercept-url pattern="/**" access="ROLE_STOCK"/>
+		
+		<session-management> 
+			<concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/> 
+		</session-management> 
+	</http>
+	
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service id="userService" data-source-ref="dataSource"
+			users-by-username-query="SELECT U_NAME USERNAME,U_PASSWORD PASSWORD,TRUE FROM USERS WHERE U_NAME=?"  
+			authorities-by-username-query="SELECT U_NAME USERNAME,A_AUTHORITY AUTHORITY FROM AUTHORITY WHERE U_NAME=?"
+			/>
+		</authentication-provider>
+	</authentication-manager>
+	
+	<!--
+	 方法权限控制
+	 这里可能还存在问题，需使用时研究
+	<global-method-security secured-annotations="enabled" />
+	 -->
+	
+	<!-- 
+	xml格式权限控制
+	<authentication-manager> 
+		<authentication-provider>
+			<user-service>
+				<user name="testuser" password="testuser" authorities="ROLE_STOCK"/>
+				<user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_STOCK"/>
+			</user-service>
+		</authentication-provider> 
+	</authentication-manager>
+	 -->
+	 
+	 
+	 
+</beans:beans>

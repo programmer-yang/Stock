@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls id="sqls">
+	<sql id="SELECT_USERS">SELECT * FROM USERS</sql>
+	<sql id="SELECT_STOCK">SELECT * FROM STOCK</sql>
+	<!-- 获取库存数量  用户名  数据有效类型 -->
+	<sql id="SELECT_STOCK_SUM">
+		SELECT U_ID,SUM(S_NUMBER_SUM) SUM,SUM(S_NUMBER_CUR) CUR FROM STOCK WHERE U_ID = ? AND S_VALID = ? GROUP BY U_ID
+	</sql>
+	
+</sqls>
