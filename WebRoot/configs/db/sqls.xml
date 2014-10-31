@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sqls id="sqls">
+<!-- 预留一个解决方案，在所有[s]标签里添加[type]属性用于SQL功能性分类。 -->
+
+	<!--[获取库存使用和剩余信息:用户:有效标志]-->
+	<s id="SELECT_STOCK_SUM" type="SELECT">
+		<![CDATA[ SELECT U_ID,SUM(S_NUMBER_SUM) SUM,SUM(S_NUMBER_CUR) CUR FROM STOCK WHERE U_ID = ? AND S_VALID = ? GROUP BY U_ID ]]>
+	</s>
+	<!--[获取库存信息:用户ID]-->
+	<s id="SELECT_STOCK" type="SELECT">
+		<![CDATA[ SELECT * FROM STOCK WHERE S_ID = ? ]]>
+	</s>
+	<!--[获取库存数量:用户:有效标志]-->
+	<s id="SELECT_STOCK_COUNT" type="SELECT">
+		<![CDATA[ SELECT COUNT(1) FROM STOCK WHERE U_ID = ? AND S_VALID = ? ORDER BY S_N_ID ]]>
+	</s>
+
+	<!--[获取用户信息:用户名]-->
+	<s id="SELECT_USER_INFO" type="SELECT">
+		<![CDATA[ SELECT * FROM USERS WHERE U_USERNAME = ? ]]>
+	</s>
+	<!--[获取用户信息:用户ID]-->
+	<s id="SELECT_USER" type="SELECT">
+		<![CDATA[ SELECT * FROM USERS WHERE U_ID = ? ]]>
+	</s>
+	<!--[获取库存名称:库存名称ID]-->
+	<s id="SELECT_STOCKNAME" type="SELECT">
+		<![CDATA[ SELECT * FROM STOCK_NAME WHERE S_N_ID = ? ]]>
+	</s>
+	<!--[获取库存类型:库存类型ID]-->
+	<s id="SELECT_STOCKTYPE" type="SELECT">
+		<![CDATA[ SELECT * FROM STOCK_TYPE WHERE S_T_ID = ? ]]>
+	</s>
+	<!--[获取库存消费信集合:用户ID,日期]-->
+	<s id="SELECT_STOCKLOG_LIST" type="SELECT">
+		<![CDATA[ SELECT * FROM STOCK_LOG WHERE S_ID IN(SELECT S_ID FROM STOCK WHERE U_ID = ?) AND S_L_TIME = ? ORDER BY S_L_NUMBER DESC ]]>
+	</s>
+	<!--[获取库存消费信:ID]-->
+	<s id="SELECT_STOCKLOG" type="SELECT">
+		<![CDATA[ SELECT * FROM STOCK_LOG WHERE S_L_ID = ? ]]>
+	</s>
+	
+</sqls>
