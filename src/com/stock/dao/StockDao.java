@@ -2,6 +2,7 @@ package com.stock.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
@@ -81,6 +82,11 @@ public class StockDao extends AbstractDao<Stock, Long> {
 	{
 		return super.queryForInt("SELECT_STOCK_COUNT",o.getUser().getId(),o.getValid());
 		
+	}
+	
+	public List<Stock> getStocksByUser(User u)
+	{
+		return super.queryForObjectList("SELECT_STOCK_LIST", u.getId());
 	}
 
 }

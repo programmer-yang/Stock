@@ -5,6 +5,7 @@
   <head>
     <title>Stock Login</title>
 	
+	<link href="<s:url value='/resources/images/public/s.ico'/>" type="image/x-icon" rel=icon>
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="this is my page">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -30,7 +31,7 @@
 			  <form name="loginForm" id="loginForm" method="post" action="${authUrl }">
 		          <div class="login-form">
 		            <div class="form-group">
-		              <input type="text" class="form-control login-field" value="" placeholder="用户名" id="login-name" name="j_username" />
+		              <input type="text" class="form-control login-field" value="" placeholder="用户名" id="login-name" name="j_username" autocomplete="off" />
 		              <label class="login-field-icon fui-user" for="login-name"></label>
 		            </div>
 		

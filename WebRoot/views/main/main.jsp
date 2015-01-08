@@ -5,24 +5,51 @@
   <head>
     <title>Welcome ${currentUserName}</title>
 	
+	<link href="<s:url value='/resources/images/public/s.ico'/>" type="image/x-icon" rel=icon>
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="this is my page">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
 	<link href="<s:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet">
 	<link href="<s:url value='/resources/css/dashboard.css'/>" rel="stylesheet">
+	<link href="<s:url value='/resources/css/bootstrap-datetimepicker.min.css'/>" rel="stylesheet">
+	<!-- ladda-themeless.css  基于bootstrap的按钮加载样式 1 -->
+    <link href="<s:url value='/resources/css/ladda-themeless.min.css'/>" rel="stylesheet">
+	<!-- message-messenger.css messenger-theme-future.css  基于bootstrap的提示框样式 2 -->
+    <link href="<s:url value='/resources/css/messenger.css'/>" rel="stylesheet">
+    <link href="<s:url value='/resources/css/messenger-theme-flat.css'/>" rel="stylesheet">
+    <!-- 
+    <link href="<s:url value='/resources/css/messenger-theme-air.css'/>" rel="stylesheet">
+    <link href="<s:url value='/resources/css/messenger-theme-ice.css'/>" rel="stylesheet">
+    <link href="<s:url value='/resources/css/messenger-theme-block.css'/>" rel="stylesheet">
+    <link href="<s:url value='/resources/css/messenger-theme-future.css'/>" rel="stylesheet">
+	 -->
+	 
     <link href="<s:url value='/resources/css/jquery.dataTables.css'/>" rel="stylesheet">
     <link href="<s:url value='/resources/css/main.css'/>" rel="stylesheet">
     
  
     <script type="text/javascript" src="<s:url value='/resources/js/jquery.min.js'/>"></script>
+	<script type="text/javascript" src="<s:url value='/resources/js/bootstrap.min.js'/>"></script>
+    <script type="text/javascript" src="<s:url value='/resources/js/bootstrap.autocomplete.js'/>"></script>
+    <script type="text/javascript" src="<s:url value='/resources/js/bootstrap-datetimepicker.min.js'/>"></script>
+    <script type="text/javascript" src="<s:url value='/resources/js/bootstrap-datetimepicker.zh-CN.js'/>"></script>
     <script type="text/javascript" src="<s:url value='/resources/js/highcharts.js'/>"></script>
+    <!-- 基于Bootstrap的按钮加载动画 2 -->
+    <script type="text/javascript" src="<s:url value='/resources/js/spin.min.js'/>"></script>
+    <script type="text/javascript" src="<s:url value='/resources/js/ladda.min.js'/>"></script>
+    <!-- message 提示框 1 -->
+    <script type="text/javascript" src="<s:url value='/resources/js/messenger.min.js'/>"></script>
+    
     <script type="text/javascript" src="<s:url value='/resources/js/jquery.dataTables.min.js'/>"></script>
-	
 	<script type="text/javascript" src="<s:url value='/resources/js/m/m.js'/>"></script>
 	
-	<script type="text/javascript" src="<s:url value='/resources/js/bootstrap.min.js'/>"></script>
 	
+	<style type="text/css">
+		.glyphicon-calendar:before {
+			  content: "\e109";
+			}
+	</style>
   </head>
   
   <body onload="os.mp.init()">
@@ -41,10 +68,10 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">admin</a></li>
-            <li><a href="javascript:os.mp.menu.load_content()" >添加数据</a></li>
+            <li><a href="javascript:os.mp.top.data.init();" >添加数据</a></li>
             <s:url var="logoutUrl" value="/j_spring_security_logout" />
             <li><a href="${logoutUrl}">注销</a></li>
-            <li><a href="javascript:os.mp.menu.load_content()" >帮助</a></li>
+            <li><a href="javascript:os.action('abc');" >帮助</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -582,7 +609,6 @@
 					<!-- 表格 END -->
 					</div>
 				</div>
-		        <!-- 右侧内容  END -->
 		        <div class="col-sm-12 col-sm-offset-3 col-md-offset-2 main" id="list_page_box">
 					<h1 class="page-header">清单</h1>
 		

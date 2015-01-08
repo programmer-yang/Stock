@@ -1,10 +1,13 @@
 package com.stock.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stock.dao.StockDao;
 import com.stock.entity.Stock;
+import com.stock.entity.User;
 import com.stock.service.base.AbstractService;
 
 @Service
@@ -32,6 +35,11 @@ public class StockService extends AbstractService<Stock, Long> {
 	public Integer getStockCountByValid(Stock stock)
 	{
 		return stockDao.getStockCountByValid(stock);
+	}
+	
+	public List<Stock> getStocksByUser(User u )
+	{
+		return stockDao.getStocksByUser(u);
 	}
 	
 	

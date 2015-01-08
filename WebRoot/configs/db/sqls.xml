@@ -35,9 +35,13 @@
 	<s id="SELECT_STOCKLOG_LIST" type="SELECT">
 		<![CDATA[ SELECT * FROM STOCK_LOG WHERE S_ID IN(SELECT S_ID FROM STOCK WHERE U_ID = ?) AND S_L_TIME = ? ORDER BY S_L_NUMBER DESC ]]>
 	</s>
-	<!--[获取库存消费信:ID]-->
+	<!--[获取库存消费信息:ID]-->
 	<s id="SELECT_STOCKLOG" type="SELECT">
 		<![CDATA[ SELECT * FROM STOCK_LOG WHERE S_L_ID = ? ]]>
+	</s>
+	<!--[获取库存集合:用户ID]-->
+	<s id="SELECT_STOCK_LIST" type="SELECT">
+		<![CDATA[ SELECT * FROM STOCK WHERE U_ID = ? ]]>
 	</s>
 	
 </sqls>

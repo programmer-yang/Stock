@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.stock.entity.Stock;
 import com.stock.entity.StockLog;
@@ -103,7 +104,7 @@ public class MainController {
 		return JsonFactory.getJson(map);
 	}
 	
-	@RequestMapping("main/ajax/column/data")
+	@RequestMapping("/main/ajax/column/data")
 	public void getColumnDataByJson(Map<String, Object> model,HttpServletRequest req, HttpServletResponse res)
 	{
 		User user = (User) req.getSession().getAttribute("currentUser");
